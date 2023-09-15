@@ -1,0 +1,49 @@
+name: webmap
+services:
+  webmap:
+    image: vuldocker/webmap:latest
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    ports:
+      - 18002:8000
+    x-casaos:
+      ports:
+        - container: "18002"
+          description:
+            en_us: Nmap and Masscan Web UI Port 
+            zh_cn: Nmap和Masscan Web客户端端口
+    restart: unless-stopped
+    container_name: webmap
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: arch3rPro
+  category: Pentest
+  description:
+    en_us: WebMap-Nmap Web Dashboard and Reporting.
+    zh_cn: WebMap是Nmap统计仪表盘和报告生成的Web客户端。
+  developer: SabyasachiRana
+  icon: https://raw.githubusercontent.com/arch3rPro/Pentest-Docker/master/Apps/WebMap/nmap.svg  
+  screenshot_link:
+    - https://raw.githubusercontent.com/arch3rPro/Pentest-Docker/master/Apps/WebMap/screenshot-01.png
+    - https://raw.githubusercontent.com/arch3rPro/Pentest-Docker/master/Apps/WebMap/screenshot-02.png
+    - https://raw.githubusercontent.com/arch3rPro/Pentest-Docker/master/Apps/WebMap/screenshot-03.png
+  tagline:
+    en_us: Nmap Web Dashboard and Reporting
+    zh_cn: Nmap Web客户端
+  thumbnail: https://raw.githubusercontent.com/arch3rPro/Pentest-Docker/master/Apps/WebMap/thumbnail.png
+  index: /
+  scheme: http
+  tips:
+    custom: |-
+      登录需要Token
+      请在终端执行
+      `docker exec -ti webmap /root/token`
+      获取Token
+  title:
+    custom: Webmap
+  port_map: "18002"
